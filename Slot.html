@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slot Machine</title>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; }
+        .slot-machine { display: flex; justify-content: center; margin: 20px; }
+        .reel { width: 50px; height: 50px; border: 2px solid black; font-size: 30px; margin: 5px; display: flex; align-items: center; justify-content: center; }
+        button { padding: 10px 20px; font-size: 20px; }
+        #result { font-size: 24px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Slot Machine</h1>
+    <div class="slot-machine">
+        <div class="reel" id="reel1">❓</div>
+        <div class="reel" id="reel2">❓</div>
+        <div class="reel" id="reel3">❓</div>
+    </div>
+    <button onclick="spin()">Spin</button>
+    <p id="result"></p>
+
+    <script>
+        function spin() {
+            const symbols = ['🍒', '🍋', '🍊', '🍉', '⭐'];
+            let r1 = symbols[Math.floor(Math.random() * symbols.length)];
+            let r2 = symbols[Math.floor(Math.random() * symbols.length)];
+            let r3 = symbols[Math.floor(Math.random() * symbols.length)];
+            
+            document.getElementById('reel1').textContent = r1;
+            document.getElementById('reel2').textContent = r2;
+            document.getElementById('reel3').textContent = r3;
+            
+            if (r1 === r2 && r2 === r3) {
+                document.getElementById('result').textContent = '🎉 You Win! 🎉';
+            } else {
+                document.getElementById('result').textContent = 'Try Again!';
+            }
+        }
+    </script>
+</body>
+</html>
